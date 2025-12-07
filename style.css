@@ -1,294 +1,656 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --primary-color: #0d6efd; /* آبی حرفه‌ای */
+  --secondary-color: #6c757d;
+  --bg-light: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-dark: #212529;
+  --text-muted: #6c757d;
+  --border-radius: 12px;
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
 }
 
 body {
-    font-family: 'Vazirmatn', sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #e0e0e0;
-    line-height: 1.6;
-    overflow-x: hidden;
+  font-family: "Vazirmatn", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem 0;
+  transition: var(--transition);
 }
 
-/* Header */
-.header {
-    text-align: center;
-    padding: 2rem 0;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary-color) !important;
+  font-size: 1.5rem;
 }
 
-.title {
-    font-size: 3rem;
-    color: #ff6b6b;
-    font-weight: 700;
-    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+.nav-link {
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative; /* برای underline */
+  padding-bottom: 0.5rem; /* فضا برای خط */
+  margin: 0 6px;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: #a0a0a0;
-    margin-top: 0.5rem;
+.nav-link:hover {
+  color: var(--primary-color) !important;
+  transform: translateY(-1px);
 }
 
-/* Hero */
+/* Underline animation for nav links */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0; /* RTL: از راست شروع */
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%; /* از راست به چپ پر می‌شه */
+}
+
+/* Hero Section - حرفه‌ای‌تر با gradient طولانی و عناصر لایه‌ای */
 .hero {
-    padding: 4rem 0;
-    text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    #0dcaf0 50%,
+    rgba(13, 110, 253, 0.8) 100%
+  );
+  color: white;
+  padding: 8rem 0 6rem;
+  margin-bottom: 0; /* بدون margin برای جریان طبیعی */
+  overflow: hidden;
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
-.photo-container {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%
+    );
+  animation: shimmer 4s ease-in-out infinite;
+  z-index: 0;
 }
 
-.person-photo {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #ff6b6b;
-    box-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
-    transition: all 0.3s ease;
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-.person-photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(255, 107, 107, 0.6);
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
-.photo-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.name {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  margin-bottom: 2rem;
+  max-width: 600px;
 }
 
-.status {
-    font-size: 1.1rem;
-    color: #ff6b6b;
-    margin-bottom: 1.5rem;
+.btn-primary-custom {
+  background: white;
+  color: var(--primary-color);
+  border: 2px solid white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.details-btn {
-    font-family: 'Vazirmatn', sans-serif;
-    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
-    color: #fff;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+.btn-primary-custom:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.details-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+.btn-outline-custom {
+  border-color: white;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  margin-right: 1rem;
 }
 
-/* Description */
-.description {
-    padding: 3rem 0;
-    background: rgba(0, 0, 0, 0.2);
+.btn-outline-custom:hover {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.description h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: #ff6b6b;
-    margin-bottom: 2rem;
+.stats-container {
+  position: relative;
+  z-index: 1;
+  margin-top: 3rem;
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
+.stats-row {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  justify-content: flex-end; /* RTL align */
 }
 
-.info-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: all 0.3s ease;
+.stats-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(15px);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 120px;
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.info-item:hover {
-    background: rgba(255, 107, 107, 0.2);
-    transform: translateY(-2px);
+.stats-card:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
 }
 
-.label {
-    display: block;
-    font-weight: 600;
-    color: #ff6b6b;
-    margin-bottom: 0.5rem;
+.stats-card .stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
 }
 
-.value {
-    color: #e0e0e0;
+.stats-card .stat-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
 }
 
-/* Contact */
-.contact {
-    padding: 3rem 0;
-    text-align: center;
+.last-project {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
-.contact h3 {
-    font-size: 1.8rem;
-    color: #ff6b6b;
-    margin-bottom: 2rem;
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--text-dark);
 }
 
-.contact-methods {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
+.project-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  height: 100%;
+  position: relative;
 }
 
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 1rem 1.5rem;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 107, 107, 0.3);
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-.contact-link:hover {
-    background: #ff6b6b;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+/* Project Image Container with Overlay */
+.project-img-container {
+  position: relative;
+  overflow: hidden;
 }
 
-.icon {
-    font-size: 1.5rem;
+.project-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transition: var(--transition);
 }
 
-.share-section p {
-    margin-bottom: 1rem;
-    color: #a0a0a0;
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* مات شیشه‌ای */
+  backdrop-filter: blur(5px); /* blur برای مات شدن */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
-.share-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+.project-card:hover .project-overlay {
+  opacity: 1;
 }
 
-.share-btn {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
+.project-card:hover .project-img {
+  filter: blur(2px); /* مات کردن عکس */
 }
 
-.share-btn:hover {
-    background: #ff6b6b;
-    transform: scale(1.1);
+.project-buttons {
+  display: flex;
+  gap: 1rem;
+  z-index: 2;
 }
 
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+.project-buttons .btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  min-width: 120px;
+  background: white;
+  color: var(--primary-color);
 }
 
-.modal-content {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    margin: 10% auto;
-    padding: 2rem;
-    border-radius: 15px;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-    color: #e0e0e0;
+.project-buttons .btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.close {
-    position: absolute;
-    top: 1rem;
-    left: 1.5rem;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #ff6b6b;
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.modal h3 {
-    color: #ff6b6b;
-    margin-bottom: 1rem;
+.project-tag {
+  background: var(--bg-light);
+  color: var(--secondary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 2rem 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: #a0a0a0;
+/* Why Us Section */
+.why-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(13, 110, 253, 0.1);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+  height: 100%;
 }
 
-/* Animations */
+.why-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
+}
+
+.why-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Testimonials Section - ۳ کارت هم‌اندازه، مرتب و حرفه‌ای */
+.testimonial-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background: linear-gradient(
+    135deg,
+    rgba(13, 110, 253, 0.05) 0%,
+    rgba(13, 202, 240, 0.05) 100%
+  );
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid rgba(13, 110, 253, 0.1);
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* برای هم‌اندازه بودن */
+  font-family: "Vazirmatn", sans-serif; /* فونت واضح */
+  line-height: 1.7;
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
+}
+
+.testimonial-content {
+  flex-grow: 1;
+}
+
+.testimonial-quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 400; /* نرمال و بدون کج‌بودن اضافی */
+  text-align: right;
+  quotes: '"' '"' "'" "'";
+  direction: rtl; /* مطمئن از RTL */
+}
+
+.testimonial-quote::before {
+  content: open-quote;
+  font-size: 3rem; /* کوچکتر برای حرفه‌ای‌تر */
+  color: var(--primary-color);
+  display: block; /* بلاک برای جلوگیری از کج‌بودن */
+  text-align: right;
+  margin: 0 0 1rem 0;
+  font-family: serif;
+  line-height: 1;
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: right;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.testimonial-company {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  text-align: right;
+}
+
+.team-card {
+  text-align: center;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), #0dcaf0);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.team-card:hover::before {
+  transform: scaleX(1);
+}
+
+.team-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), #0dcaf0);
+  margin: 0 auto 1rem;
+  transition: var(--transition);
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.team-card:hover .team-avatar {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(13, 110, 253, 0.3);
+}
+
+/* Footer - هم‌رنگ hero */
+footer {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #0dcaf0 100%);
+  color: white;
+  padding: 4rem 0 2rem;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  z-index: 0;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-about {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.footer-links h6,
+.footer-access h6 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.footer-links a,
+.footer-access a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.footer-links a:hover,
+.footer-access a:hover {
+  color: white;
+  transform: translateX(-5px);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 2rem;
+  transition: var(--transition);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.social-icons a:hover {
+  color: var(--primary-color);
+  background: white;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Fade-in animation */
 .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--transition);
 }
 
 .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Responsive */
+/* Stagger delay for children */
+.fade-in > * {
+  transition-delay: 0.1s;
+}
+
+/* Responsive بهبود یافته */
 @media (max-width: 768px) {
-    .title { font-size: 2rem; }
-    .person-photo { width: 200px; height: 200px; }
-    .name { font-size: 2rem; }
-    .contact-methods { flex-direction: column; align-items: center; }
-    .info-grid { grid-template-columns: 1fr; }
+  .hero {
+    padding: 4rem 0 3rem;
+    min-height: 70vh;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-top: 60px;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .stats-card {
+    min-height: 90px;
+    padding: 1.5rem 1rem;
+  }
+
+  .testimonial-card {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-quote::before {
+    display: block;
+    text-align: center;
+    margin: 0 auto 1rem;
+  }
+
+  .project-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-buttons .btn {
+    min-width: auto;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .project-overlay {
+    backdrop-filter: blur(3px); /* کمتر blur در موبایل */
+  }
+
+  footer .row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-icons {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .social-icons a {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Nav responsive */
+  .nav-link::after {
+    display: none; /* خط رو در موبایل مخفی کن */
+  }
+}
+
+@media (min-width: 769px) {
+  .stats-row {
+    height: auto;
+  }
 }

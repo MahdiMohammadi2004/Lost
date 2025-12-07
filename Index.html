@@ -1,115 +1,383 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گم شده: عرفان قدیری - لطفاً کمک کنید</title>
-    <meta name="description" content="عرفان قدیری گم شده است. اگر او را دیدید، لطفاً با ما تماس بگیرید.">
-    
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <h1 class="title">گم شده</h1>
-            <p class="subtitle">لطفاً به این خانواده کمک کنید</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سورنا - توسعه‌دهندگان حرفه‌ای وب و اپ</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts: Vazirmatn for Persian -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS - لینک به فایل CSS جداگانه -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">سورنا</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">خانه</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">پروژه‌ها</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#why-us">چرا ما؟</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">نظرات مشتریان</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#team">تیم</a></li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </nav>
 
-    <main class="main">
-        <section class="hero fade-in">
-            <div class="container">
-                <div class="photo-container">
-                    <img src="erfan1.jpg" alt="عرفان قدیری" class="person-photo">
-                    <div class="photo-overlay"></div>
-                </div>
-                <div class="hero-content">
-                    <h2 class="name">عرفان قدیری</h2>
-                    <p class="status">۲۰ ساله، گم شده از ۱۴۰۳/۰۸/۲۲</p>
-                    <button class="details-btn" onclick="openModal()">جزئیات بیشتر</button>
-                </div>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8 hero-content">
+            <h1>تیم سورنا: متخصصان توسعه وب و اپلیکیشن‌های پیشرفته</h1>
+            <p>
+              با تمرکز بر کد تمیز، امنیت بالا و مقیاس‌پذیری، پروژه‌های شما را از
+              ایده‌پردازی تا لانچ نهایی، با استانداردهای جهانی همراهی می‌کنیم.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#projects" class="btn btn-primary-custom">نمونه‌کارها</a>
+              <a href="#" class="btn btn-outline-custom">درخواست مشاوره</a>
             </div>
-        </section>
-
-        <section class="description fade-in">
-            <div class="container">
-                <h3>آخرین اطلاعات</h3>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="label">آخرین مکان:</span>
-                        <span class="value">مشهد ، دانشگاه سجاد</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">سن:</span>
-                        <span class="value">۲۰ سال</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">قد:</span>
-                        <span class="value">۱۷۵ سانتی‌متر</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">مو:</span>
-                        <span class="value">مشکی، کوتاه</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">چشم:</span>
-                        <span class="value">قهوه‌ای</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">لباس آخر:</span>
-                        <span class="value">تی‌شرت خاکستری، شلوار جین</span>
-                    </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="stats-container">
+              <div class="stats-row">
+                <div class="stats-card">
+                  <div class="stat-number">5+</div>
+                  <div class="stat-label">پروژه</div>
                 </div>
+                <div class="stats-card">
+                  <div class="stat-number">4</div>
+                  <div class="stat-label">سال تجربه</div>
+                </div>
+                <div class="stats-card">
+                  <div class="stat-number">96%</div>
+                  <div class="stat-label">رضایت</div>
+                </div>
+              </div>
+              <div class="last-project">
+                <small class="d-block mb-1" style="opacity: 0.8"
+                  >آخرین پروژه</small
+                >
+                <strong>اپلیکیشن مدیریت سفارش</strong>
+              </div>
             </div>
-        </section>
-
-        <section class="contact fade-in">
-            <div class="container">
-                <h3>اگر او را دیدید، فوراً تماس بگیرید</h3>
-                <h3>به یابنده شیرینی تپلی داده میشود</h3>
-                <div class="contact-methods">
-                    <a href="tel:+989123456789" class="contact-link phone">
-                        <span class="icon">📞</span>
-                        <span class="text">۰۹۲۲۰۸۰۱۷۷۵</span>
-                    </a>
-                    <a href="https://wa.me/+989220801775" class="contact-link whatsapp">
-                        <span class="icon">💬</span>
-                        <span class="text">واتس‌اپ</span>
-                    </a>
-                    <a href="mailto:erfan-shimil.ir" class="contact-link email">
-                        <span class="icon">📧</span>
-                        <span class="text">erfan-shimil.ir</span>
-                    </a>
-                </div>
-                <div class="share-section">
-                    <p>لطفاً به اشتراک بگذارید:</p>
-                    <div class="share-buttons">
-                        <a href="#" class="share-btn twitter">🐦</a>
-                        <a href="#" class="share-btn instagram">📸</a>
-                        <a href="#" class="share-btn telegram">⚡</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>جزئیات اضافی</h3>
-            <p>عرفان قدیری ممکن است در حال گشت‌وگذار در دستشویی های دانشگاه سجاد باشد. هرگونه اطلاعات، حتی کوچک، می‌تواند نجات‌دهنده باشد.</p>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; ۱۴۰۳ | لطفاً برای کمک، با ما در ارتباط باشید. هر اشتراک‌گذاری مهم است.</p>
+    <section id="team" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title fade-in">اعضای تیم</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card fade-in">
+              <div
+                class="team-avatar"
+                style="
+                  background-image: url('mahdi.jpg');
+                  background-size: cover;
+                  background-position: center;
+                "
+              ></div>
+              <h5 class="mb-2">مهدی محمدی</h5>
+              <p class="text-muted">بک‌اند دولوپر — تخصص در ASP.NET</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card fade-in">
+              <div
+                class="team-avatar"
+                style="
+                  background-image: url('javad.jpg');
+                  background-size: cover;
+                  background-position: center;
+                "
+              ></div>
+              <h5 class="mb-2">جواد حیدری</h5>
+              <p class="text-muted">فرانت‌اند و تجربه‌کاربری — Flutter</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-5">
+      <div class="container">
+        <h2 class="section-title fade-in">پروژه‌های ما</h2>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="project-card fade-in">
+              <div class="project-img-container">
+                <div
+                  class="project-img"
+                  style="
+                    background-image: url('https://picsum.photos/800/500?random=1');
+                  "
+                  loading="lazy"
+                ></div>
+                <div class="project-overlay">
+                  <div class="project-buttons">
+                    <button class="btn btn-details">جزئیات بیشتر</button>
+                    <button class="btn btn-demo">دمو</button>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h5 class="mb-2">وبسایت شرکتی</h5>
+                <p class="text-muted small mb-3">
+                  طراحی واکنش‌گرا، پنل ادمین و بهینه‌سازی سرعت.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">HTML</span>
+                  <span class="project-tag">CSS</span>
+                  <span class="project-tag">ASP.NET</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="project-card fade-in">
+              <div class="project-img-container">
+                <div
+                  class="project-img"
+                  style="
+                    background-image: url('https://picsum.photos/800/500?random=2');
+                  "
+                  loading="lazy"
+                ></div>
+                <div class="project-overlay">
+                  <div class="project-buttons">
+                    <button class="btn btn-details">جزئیات بیشتر</button>
+                    <button class="btn btn-demo">دمو</button>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h5 class="mb-2">داشبورد مدیریت</h5>
+                <p class="text-muted small mb-3">
+                  وارد کردن جزئیات و فیلتر پیشرفته، گزارش‌گیری.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">JS</span>
+                  <span class="project-tag">API</span>
+                  <span class="project-tag">SQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="project-card fade-in">
+              <div class="project-img-container">
+                <div
+                  class="project-img"
+                  style="
+                    background-image: url('https://picsum.photos/800/500?random=3');
+                  "
+                  loading="lazy"
+                ></div>
+                <div class="project-overlay">
+                  <div class="project-buttons">
+                    <button class="btn btn-details">جزئیات بیشتر</button>
+                    <button class="btn btn-demo">دمو</button>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h5 class="mb-2">سیستم سفارش آنلاین</h5>
+                <p class="text-muted small mb-3">
+                  پرداخت، مدیریت سفارش و ارسال نوتیفیکیشن.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">C#</span>
+                  <span class="project-tag">EF</span>
+                  <span class="project-tag">Responsive</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title fade-in">چرا با ما همکاری کنید؟</h2>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="why-card fade-in">
+              <div class="why-icon">🚀</div>
+              <h5 class="mb-2">تجربه عمیق</h5>
+              <p class="text-muted small">
+                ۸ سال سابقه در توسعه پروژه‌های پیچیده وب و اپ.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="why-card fade-in">
+              <div class="why-icon">⭐</div>
+              <h5 class="mb-2">کیفیت بالا</h5>
+              <p class="text-muted small">
+                کد تمیز، مقیاس‌پذیر و بهینه‌شده برای عملکرد حداکثری.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="why-card fade-in">
+              <div class="why-icon">⚡</div>
+              <h5 class="mb-2">سرعت تحویل</h5>
+              <p class="text-muted small">
+                از ایده تا لانچ در زمان‌بندی دقیق و بدون تأخیر.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="why-card fade-in">
+              <div class="why-icon">🛡️</div>
+              <h5 class="mb-2">پشتیبانی مداوم</h5>
+              <p class="text-muted small">
+                به‌روزرسانی و پشتیبانی پس از تحویل برای اطمینان کامل.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="py-5">
+      <div class="container">
+        <h2 class="section-title fade-in">چه می‌گویند مشتریان ما</h2>
+        <div class="row g-4 testimonial-row">
+          <div class="col-md-4">
+            <div class="testimonial-card fade-in">
+              <div class="testimonial-content">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">
+                  همکاری با تیم سورنا تجربه‌ای فوق‌العاده بود. آن‌ها نه تنها
+                  وبسایت ما را با سرعت بالا توسعه دادند، بلکه با پیشنهادهای
+                  خلاقانه، عملکرد آن را به سطح جدیدی رساندند.
+                </p>
+              </div>
+              <div>
+                <div class="testimonial-author">علی رضایی</div>
+                <div class="testimonial-company">مدیرعامل شرکت فناوری نوین</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card fade-in">
+              <div class="testimonial-content">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">
+                  APIهای سفارشی سورنا نیازهای پیچیده ما را به بهترین شکل پوشش
+                  داد. امنیت، سرعت و یکپارچگی – همه چیز عالی بود. این تیم واقعاً
+                  شریک قابل اعتمادی است.
+                </p>
+              </div>
+              <div>
+                <div class="testimonial-author">سارا احمدی</div>
+                <div class="testimonial-company">CTO استارت‌آپ دیجیتال</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card fade-in">
+              <div class="testimonial-content">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">
+                  پنل مدیریت پیشرفته‌ای که برای ما ساختند، کسب‌وکارمان را متحول
+                  کرد. از طراحی کاربرپسند تا بهینه‌سازی، هر جزئیاتی را با دقت
+                  انجام دادند.
+                </p>
+              </div>
+              <div>
+                <div class="testimonial-author">محمد کریمی</div>
+                <div class="testimonial-company">مدیر پروژه خلاقیت</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer - هم‌رنگ hero -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="footer-about">
+                تیم سورنا با سال‌ها تجربه در عرصه توسعه نرم‌افزار، متعهد به خلق
+                راه‌حل‌های دیجیتال نوآورانه است. ما باور داریم که هر پروژه،
+                فرصتی برای تحول است – و با ابزارهای پیشرفته و تیمی متخصص، شما را
+                به موفقیت می‌رسانیم.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h6>لینک‌های اصلی</h6>
+              <div class="footer-links">
+                <a href="#home">خانه</a>
+                <a href="#projects">پروژه‌ها</a>
+                <a href="#team">تیم</a>
+                <a href="#">قوانین و مقررات</a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h6>دسترسی‌ها</h6>
+              <div class="footer-access">
+                <a href="#">مقالات و ویدئوها</a>
+                <a href="#">محصولات</a>
+                <a href="#">مشاوره پروژه</a>
+                <a href="#">پنل کاربری</a>
+              </div>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-telegram"></i></a>
+          </div>
+          <div class="footer-bottom">
+            تمامی حقوق مربوط به سورنا محفوظ است © ۲۰۲۵
+          </div>
+        </div>
+      </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS - لینک به فایل JS جداگانه -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
